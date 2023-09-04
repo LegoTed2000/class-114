@@ -1,5 +1,8 @@
-function preload() {
+NoseX = 0;
+NoseY = 0;
 
+function preload() {
+clown_nose = loadImage("https://i.postimg.cc/dVxVdqRT/476-4761771-circle-hd-png-download-removebg-preview.png")
 }
 
 function setup() {
@@ -13,7 +16,8 @@ function setup() {
 }
 
 function draw() {
-image(video , 0, 0, 300, 300)
+image(video , 0, 0, 300, 300);
+image(clown_nose, NoseX -15, NoseY -8, 30, 30);
 }
 
 function take_snapshot() {
@@ -27,6 +31,8 @@ function modelloaded() {
 function gotposes(results) {
     if(results.length > 0) {
         console.log(results);
+        NoseX = results[0].pose.nose.x ;
+        NoseY = results[0].pose.nose.y ;
         console.log("The nose's x is " + results[0].pose.nose.x);
         console.log("The nose's y is " + results[0].pose.nose.y);
     }
